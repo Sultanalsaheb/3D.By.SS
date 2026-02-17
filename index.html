@@ -188,6 +188,21 @@
             text-align: center;
             padding: 40px 20px;
         }
+
+        .hero-button {
+    padding: 12px 28px;
+    border-radius: 30px;
+    border: none;
+    background: linear-gradient(90deg, var(--blue1), var(--blue2));
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.hero-button:hover {
+    transform: scale(1.05);
+}
     </style>
 </head>
 
@@ -296,8 +311,8 @@
 
             <button class="carousel-btn next" onclick="moveSlide(1)">›</button>
         </div>
-             <a href="catalog.pdf" download>
-                  <button class="hero"> Download Full Catalog </button>
+            <a href="catalog.pdf" download>
+                <button class="hero-button">Download Full Catalog</button>
             </a>
     </section>
 
@@ -307,7 +322,7 @@
     </section>
 
     <footer>
-        <p>© 2026 3D by SS. All rights reserved.</p>
+        <p>© 2026 3D By SS. All rights reserved.</p>
     </footer>
 
     <script>

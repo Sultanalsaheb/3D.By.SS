@@ -160,6 +160,36 @@
                 height: 260px;
             }
         }
+
+        .secret-box {
+            max-width: 700px;
+            margin: 15px auto;
+            border-radius: 15px;
+            background: var(--gray);
+            overflow: hidden;
+        }
+
+        .secret-title {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(90deg, var(--blue1), var(--blue2));
+            color: white;
+            border: none;
+            font-size: 18px;
+            cursor: pointer;
+            text-align: left;
+        }
+
+        .secret-content {
+    display: none;
+    padding: 20px;
+    background: #f0fbff;
+    border-top: 2px solid var(--blue2);
+    color: #444;
+    font-size: 16px;
+}
+
+
     </style>
 </head>
 
@@ -181,41 +211,39 @@
     </section>
 
     <section id="services">
-    <h2 class="section-title">Services</h2>
-    <p class="section-text">
-        We offer high quality 3D design and printing services made to fit your needs.
-    </p>
+        <h2 class="section-title">Services</h2>
+        <p class="section-text">
+            Click each service to learn more.
+        </p>
 
-    <div class="cards">
-        <div class="card">
-            <h3>Custom 3D Models</h3>
-            <p>
-                We design custom 3D models based on your ideas, sketches, or needs.
-            </p>
+        <div class="secret-box">
+            <button class="secret-title">Custom 3D Models</button>
+            <div class="secret-content">
+                <p>We design custom 3D models based on your ideas and needs.</p>
+            </div>
         </div>
 
-        <div class="card">
-            <h3>3D Printing</h3>
-            <p>
-                Strong and clean 3D prints using quality materials and precise settings.
-            </p>
+        <div class="secret-box">
+            <button class="secret-title">3D Printing</button>
+            <div class="secret-content">
+                <p>High quality 3D prints with clean detail and strong materials.</p>
+            </div>
         </div>
 
-        <div class="card">
-            <h3>Product Design</h3>
-            <p>
-                Functional and modern product designs ready for printing or testing.
-            </p>
+        <div class="secret-box">
+            <button class="secret-title">Product Design</button>
+            <div class="secret-content">
+                <p>Modern and useful product designs ready for testing and printing.</p>
+            </div>
         </div>
 
-        <div class="card">
-            <h3>Personalized Items</h3>
-            <p>
-                Name tags, keychains, gifts, and custom items made just for you.
-            </p>
+        <div class="secret-box">
+            <button class="secret-title">Personalized Items</button>
+            <div class="secret-content">
+                <p>Custom keychains, gifts, and name items made just for you.</p>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <section id="work">
         <h2 class="section-title">Featured Work</h2>
@@ -306,53 +334,63 @@
         </a>
     </section>
 
-   <section id="contact">
-    <h2>Contact</h2>
-    <p>
-        <a href="https://www.instagram.com/3d_by_ss.jo/" target="_blank">
-            Instagram: @3d_by_ss.jo
-        </a>
-    </p>
-</section>
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>
+            <a href="https://www.instagram.com/3d_by_ss.jo/" target="_blank">
+                Instagram: @3d_by_ss.jo
+            </a>
+        </p>
+    </section>
 
     <footer>
         <p>© 2026 3D by SS</p>
     </footer>
 
-<script>
-    function scrollToWork() {
-        document.getElementById("work").scrollIntoView({
-            behavior: "smooth"
+    <script>
+        function scrollToWork() {
+            document.getElementById("work").scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+
+        let index = 0;
+        let track = document.getElementById("carouselTrack");
+        let visibleItems = window.innerWidth <= 768 ? 1 : 3;
+
+        window.onresize = function () {
+            visibleItems = window.innerWidth <= 768 ? 1 : 3;
+        };
+
+        function moveSlide(direction) {
+            const totalItems = track.children.length;
+            index += direction;
+
+            if (index < 0) index = totalItems - visibleItems;
+            if (index > totalItems - visibleItems) index = 0;
+
+            const slideWidth = 100 / visibleItems;
+            track.style.transform = "translateX(-" + index * slideWidth + "%)";
+        }
+
+        function startAutoSlide() {
+            setInterval(() => {
+                moveSlide(1);
+            }, 3000);
+        }
+
+        startAutoSlide();
+
+        const titles = document.querySelectorAll(".secret-title");
+
+        titles.forEach(title => {
+            title.addEventListener("click", () => {
+                const content = title.nextElementSibling;
+                content.style.display =
+                    content.style.display === "block" ? "none" : "block";
+            });
         });
-    }
-
-    let index = 0;
-    let track = document.getElementById("carouselTrack");
-    let visibleItems = window.innerWidth <= 768 ? 1 : 3;
-
-    window.onresize = function () {
-        visibleItems = window.innerWidth <= 768 ? 1 : 3;
-    };
-
-    function moveSlide(direction) {
-        const totalItems = track.children.length;
-        index += direction;
-
-        if (index < 0) index = totalItems - visibleItems;
-        if (index > totalItems - visibleItems) index = 0;
-
-        const slideWidth = 100 / visibleItems;
-        track.style.transform = "translateX(-" + index * slideWidth + "%)";
-    }
-
-    function startAutoSlide() {
-        setInterval(() => {
-            moveSlide(1);
-        }, 3000);
-    }
-
-    startAutoSlide();
-</script>
+    </script>
 
 </body>
 

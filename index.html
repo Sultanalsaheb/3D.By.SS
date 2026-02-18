@@ -269,7 +269,7 @@
             </div>
         </div>
         <div>
-            <button class="hero" onclick="scrollToContact()">Contact Us</button>
+            <button class="hero-button" onclick="scrollToContact()">Contact Us</button>
         </div>
     </section>
 
@@ -429,6 +429,11 @@
             target.scrollIntoView({ behavior: 'smooth' });
         });
     });
+         function scrollToContact() {
+        document.getElementById("contact").scrollIntoView({
+            behavior: "smooth"
+        });
+    }
     </script>
 
 </body>

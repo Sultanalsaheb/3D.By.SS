@@ -189,6 +189,31 @@
     font-size: 16px;
 }
 
+        .contact-box {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 18px 28px;
+    border-radius: 20px;
+    background: linear-gradient(90deg, var(--blue1), var(--blue2));
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.contact-label {
+    display: block;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+.contact-handle {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.contact-box:hover {
+    transform: scale(1.05);
+}
 
     </style>
 </head>
@@ -335,13 +360,16 @@
     </section>
 
     <section id="contact">
-        <h2>Contact</h2>
-        <p>
-            <a href="https://www.instagram.com/3d_by_ss.jo/" target="_blank">
-                Instagram: @3d_by_ss.jo
-            </a>
-        </p>
-    </section>
+    <h2 class="section-title">Contact</h2>
+    <p class="section-text">
+        Want to order or ask a question? Reach out on Instagram.
+    </p>
+
+    <a href="https://www.instagram.com/3d_by_ss.jo/" target="_blank" class="contact-box">
+        <span class="contact-label">Instagram</span>
+        <span class="contact-handle">@3d_by_ss.jo</span>
+    </a>
+</section>
 
     <footer>
         <p>© 2026 3D by SS</p>

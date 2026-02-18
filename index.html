@@ -189,30 +189,35 @@
     font-size: 16px;
 }
 
-        .contact-box {
-    display: inline-block;
+ .contact-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
     margin-top: 30px;
-    padding: 18px 28px;
-    border-radius: 20px;
-    background: linear-gradient(90deg, var(--blue1), var(--blue2));
+}
+
+.contact-btn {
+    width: 260px;
+    padding: 16px 0;
+    border-radius: 30px;
+    border: none;
     color: white;
-    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
     transition: 0.3s;
 }
 
-.contact-label {
-    display: block;
-    font-size: 14px;
-    opacity: 0.9;
-}
-
-.contact-handle {
-    font-size: 20px;
-    font-weight: 600;
-}
-
-.contact-box:hover {
+.contact-btn:hover {
     transform: scale(1.05);
+}
+
+.insta-btn {
+    background: linear-gradient(90deg, #f58529, #dd2a7b, #8134af);
+}
+
+.whatsapp-btn {
+    background: #25D366;
 }
 
     </style>
@@ -362,16 +367,19 @@
         </a>
     </section>
 
-    <section id="contact">
+<section id="contact">
     <h2 class="section-title">Contact</h2>
-    <p class="section-text">
-        Want to order or ask a question? Reach out on Instagram.
-    </p>
+    <p class="section-text">Get in touch with us</p>
 
-    <a href="https://www.instagram.com/3d_by_ss.jo/" target="_blank" class="contact-box">
-        <span class="contact-label">Instagram</span>
-        <span class="contact-handle">@3d_by_ss.jo</span>
-    </a>
+    <div class="contact-buttons">
+        <a href="https://www.instagram.com/3d_by_ss.jo/" target="_blank">
+            <button class="contact-btn insta-btn">Instagram</button>
+        </a>
+
+        <a href="https://wa.me/962796960076" target="_blank">
+            <button class="contact-btn whatsapp-btn">WhatsApp</button>
+        </a>
+    </div>
 </section>
 
     <footer>

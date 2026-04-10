@@ -324,6 +324,7 @@
       cart.forEach(i => {
         msg += `${i.name} x${i.qty}\n`;
       });
+      if (note) msg += `\n\nNotes: ${note}`;
       msg += `Total: ${total} JD`;
 
       window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(msg));

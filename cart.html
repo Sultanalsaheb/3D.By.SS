@@ -315,21 +315,23 @@
       render();
     }
 
-    function sendOrder() {
-      const cart = getCart();
-      const itemsTotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
-      const total = itemsTotal + DELIVERY_FEE;
-
-      let msg = "Hi! I'd like to place an order from 3D BY SS:\n\n";
-      cart.forEach(i => {
-        msg += `${i.name} x${i.qty}\n`;
-      });
-      if (note) msg += `\n\nNotes: ${note}`;
-      msg += `Total: ${total} JD`;
-
-      window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(msg));
-    }
-
+   function sendOrder() {
+  const cart = getCart();
+  const note = document.getElementById("orderNote").value.trim();
+  const itemsTotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+  const total = itemsTotal + DELIVERY_FEE;
+  let msg = "Hi! I'd like to place an order from 3D BY SS:\n\n";
+  cart.forEach(i => {
+    msg += `${i.name} x${i.qty}\n`;
+  });
+  if (note) {
+    msg += `\n\nNotes: ${note}`;
+  }
+  msg += `\nTotal: ${total} JD`;
+  window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(msg));
+  saveCart([]);
+  render();
+}
     render();
 
     function scrollToWork() { document.getElementById("work").scrollIntoView({ behavior: "smooth" }); }

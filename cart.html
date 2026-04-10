@@ -46,7 +46,6 @@
       color: var(--muted);
       text-decoration: none;
       font-size: 14px;
-      transition: color 0.2s;
     }
 
     .back-btn:hover { color: var(--text); }
@@ -67,7 +66,6 @@
 
     .subtitle { color: var(--muted); font-size: 14px; margin-bottom: 36px; }
 
-    /* EMPTY STATE */
     .empty {
       text-align: center;
       padding: 80px 20px;
@@ -91,7 +89,6 @@
       font-size: 15px;
     }
 
-    /* CART ITEMS */
     .cart-list { display: flex; flex-direction: column; gap: 14px; }
 
     .cart-item {
@@ -102,10 +99,7 @@
       display: flex;
       align-items: center;
       gap: 16px;
-      transition: border-color 0.2s;
     }
-
-    .cart-item:hover { border-color: #444; }
 
     .item-emoji {
       font-size: 36px;
@@ -116,12 +110,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      flex-shrink: 0;
     }
 
     .item-info { flex: 1; }
 
-    .item-name { font-size: 16px; font-weight: bold; color: var(--text); margin-bottom: 4px; }
+    .item-name { font-size: 16px; font-weight: bold; margin-bottom: 4px; }
 
     .item-price {
       font-size: 15px;
@@ -135,7 +128,6 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      flex-shrink: 0;
     }
 
     .qty-btn {
@@ -147,21 +139,9 @@
       color: var(--text);
       font-size: 18px;
       cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.2s;
-      line-height: 1;
     }
 
-    .qty-btn:hover { background: #333; }
-
-    .qty-num {
-      font-size: 16px;
-      font-weight: bold;
-      min-width: 24px;
-      text-align: center;
-    }
+    .qty-num { font-size: 16px; font-weight: bold; }
 
     .remove-btn {
       background: none;
@@ -169,15 +149,8 @@
       color: #555;
       font-size: 20px;
       cursor: pointer;
-      padding: 4px 8px;
-      border-radius: 8px;
-      transition: color 0.2s, background 0.2s;
-      margin-left: 4px;
     }
 
-    .remove-btn:hover { color: #ff5555; background: #2a1a1a; }
-
-    /* NOTE FIELD */
     .note-section {
       margin-top: 28px;
       background: var(--surface);
@@ -186,30 +159,15 @@
       padding: 20px;
     }
 
-    .note-section label {
-      display: block;
-      font-size: 14px;
-      color: var(--muted);
-      margin-bottom: 10px;
-    }
-
     .note-section textarea {
       width: 100%;
       background: #111;
       border: 1px solid var(--border);
       border-radius: 10px;
       color: var(--text);
-      font-size: 14px;
       padding: 12px;
-      resize: vertical;
-      min-height: 80px;
-      outline: none;
-      transition: border-color 0.2s;
     }
 
-    .note-section textarea:focus { border-color: var(--blue1); }
-
-    /* SUMMARY */
     .summary {
       margin-top: 24px;
       background: var(--surface);
@@ -221,7 +179,6 @@
     .summary-row {
       display: flex;
       justify-content: space-between;
-      align-items: center;
       font-size: 15px;
       color: var(--muted);
       margin-bottom: 10px;
@@ -233,17 +190,8 @@
       color: var(--text);
       border-top: 1px solid var(--border);
       padding-top: 14px;
-      margin-top: 4px;
-      margin-bottom: 0;
     }
 
-    .summary-row.total span:last-child {
-      background: linear-gradient(90deg, var(--blue1), var(--blue2));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    /* CHECKOUT */
     .checkout-btn {
       width: 100%;
       margin-top: 20px;
@@ -255,18 +203,7 @@
       font-size: 17px;
       font-weight: bold;
       cursor: pointer;
-      transition: background 0.2s, transform 0.2s;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
     }
-
-    .checkout-btn:hover { background: #1ebe5d; transform: scale(1.02); }
-
-    .checkout-btn:disabled { background: #333; color: #666; cursor: not-allowed; transform: none; }
-
-    .wa-icon { font-size: 22px; }
 
     .clear-btn {
       display: block;
@@ -277,10 +214,7 @@
       font-size: 13px;
       cursor: pointer;
       text-decoration: underline;
-      transition: color 0.2s;
     }
-
-    .clear-btn:hover { color: #ff5555; }
   </style>
 </head>
 <body>
@@ -297,7 +231,6 @@
     <div class="empty" id="emptyState">
       <div class="empty-icon">🛒</div>
       <h2>Your cart is empty</h2>
-      <p style="color:var(--muted);font-size:14px">Add some products and come back!</p>
       <a href="products.html">Browse Products</a>
     </div>
 
@@ -305,7 +238,6 @@
       <div class="cart-list" id="cartList"></div>
 
       <div class="note-section">
-        <label>Any special notes? (color, custom name, size, etc.)</label>
         <textarea id="orderNote" placeholder="e.g. I want the keychain in blue with the name 'Sara'..."></textarea>
       </div>
 
@@ -314,51 +246,27 @@
           <span>Items</span>
           <span id="summaryItems">0</span>
         </div>
+        <div class="summary-row">
+          <span>Delivery</span>
+          <span>2 JD</span>
+        </div>
         <div class="summary-row total">
           <span>Total</span>
           <span id="summaryTotal">0 JD</span>
         </div>
       </div>
 
-      <button class="checkout-btn" id="checkoutBtn" onclick="sendOrder()">
-        <span class="wa-icon">💬</span> Send Order on WhatsApp
-      </button>
+      <button class="checkout-btn" onclick="sendOrder()">Send Order</button>
       <button class="clear-btn" onclick="clearCart()">Clear cart</button>
     </div>
   </div>
 
   <script>
     const WA = "962796960076";
-
-    const EMOJIS = {
-      "Espresso Capsule Holder": "☕",
-      "Kitchen Utensil Holder": "🍴",
-      "Decorative Owl Figurines": "🦉",
-      "Thinking Statue": "🗿",
-      "Face Sculpture": "🎭",
-      "Cat Decor": "🐱",
-      "Ramadan Calendar": "🌙",
-      "MagSafe Charger Stand": "📱",
-      "Desk Cable Holder": "🔌",
-      "Custom Name Keychains": "🔑",
-      "Car Logo Keychains": "🚗",
-      "Dino Keychains": "🦕",
-      "Kids Name Keychains": "🔑",
-      "Clicker Fidget": "🖱️",
-      "Infinity Cube Fidget": "∞",
-      "Wiggling Noodle Fidget": "🟢",
-      "Twisting Fidget": "🌀",
-      "Hexagon Fidget": "⬡",
-      "Spider Web Fidget": "🕸️",
-      "3-in-1 Fidget": "🎮",
-      "Funny Door Stopper": "🚪",
-      "Tic Tac Toe": "❌",
-      "The Flying Plane": "✈️",
-      "Flower Bookmark": "🌸",
-    };
+    const DELIVERY_FEE = 2;
 
     function getCart() {
-      try { return JSON.parse(localStorage.getItem("ss_cart") || "[]"); } catch { return []; }
+      return JSON.parse(localStorage.getItem("ss_cart") || "[]");
     }
 
     function saveCart(cart) {
@@ -367,90 +275,58 @@
 
     function render() {
       const cart = getCart();
-      const empty = document.getElementById("emptyState");
-      const content = document.getElementById("cartContent");
       const list = document.getElementById("cartList");
-      const countEl = document.getElementById("itemCount");
-      const summaryItems = document.getElementById("summaryItems");
-      const summaryTotal = document.getElementById("summaryTotal");
-      const checkoutBtn = document.getElementById("checkoutBtn");
-
       const totalQty = cart.reduce((s, i) => s + i.qty, 0);
-      const totalPrice = cart.reduce((s, i) => s + i.price * i.qty, 0);
+      const itemsTotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+      const total = itemsTotal + (cart.length > 0 ? DELIVERY_FEE : 0);
 
-      countEl.textContent = totalQty === 0 ? "0 items" : totalQty + " item" + (totalQty !== 1 ? "s" : "");
-
-      if (cart.length === 0) {
-        empty.classList.add("show");
-        content.style.display = "none";
-        return;
-      }
-
-      empty.classList.remove("show");
-      content.style.display = "block";
-
-      summaryItems.textContent = totalQty;
-      summaryTotal.textContent = totalPrice + " JD";
-      checkoutBtn.disabled = false;
+      document.getElementById("summaryItems").textContent = totalQty;
+      document.getElementById("summaryTotal").textContent = total + " JD";
 
       list.innerHTML = "";
-      cart.forEach((item, idx) => {
-        const div = document.createElement("div");
-        div.className = "cart-item";
-        div.innerHTML = `
-          <div class="item-emoji">${EMOJIS[item.name] || "📦"}</div>
-          <div class="item-info">
-            <div class="item-name">${item.name}</div>
-            <div class="item-price">${item.price * item.qty} JD</div>
-          </div>
-          <div class="item-controls">
-            <button class="qty-btn" onclick="changeQty(${idx}, -1)">−</button>
-            <span class="qty-num">${item.qty}</span>
-            <button class="qty-btn" onclick="changeQty(${idx}, 1)">+</button>
-            <button class="remove-btn" onclick="removeItem(${idx})" title="Remove">×</button>
+      cart.forEach((item, i) => {
+        list.innerHTML += `
+          <div class="cart-item">
+            <div class="item-emoji">📦</div>
+            <div class="item-info">
+              <div class="item-name">${item.name}</div>
+              <div class="item-price">${item.price * item.qty} JD</div>
+            </div>
+            <div class="item-controls">
+              <button onclick="changeQty(${i},-1)">-</button>
+              <span>${item.qty}</span>
+              <button onclick="changeQty(${i},1)">+</button>
+            </div>
           </div>
         `;
-        list.appendChild(div);
       });
     }
 
-    function changeQty(idx, delta) {
-      const cart = getCart();
-      cart[idx].qty += delta;
-      if (cart[idx].qty <= 0) cart.splice(idx, 1);
-      saveCart(cart);
-      render();
-    }
-
-    function removeItem(idx) {
-      const cart = getCart();
-      cart.splice(idx, 1);
+    function changeQty(i, d) {
+      let cart = getCart();
+      cart[i].qty += d;
+      if (cart[i].qty <= 0) cart.splice(i, 1);
       saveCart(cart);
       render();
     }
 
     function clearCart() {
-      if (confirm("Clear your entire cart?")) {
-        saveCart([]);
-        render();
-      }
+      saveCart([]);
+      render();
     }
 
     function sendOrder() {
       const cart = getCart();
-      if (cart.length === 0) return;
+      const itemsTotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
+      const total = itemsTotal + DELIVERY_FEE;
 
-      const note = document.getElementById("orderNote").value.trim();
-      const total = cart.reduce((s, i) => s + i.price * i.qty, 0);
-
-      let msg = "Hi! I'd like to place an order from 3D BY SS:\n\n";
-      cart.forEach(item => {
-        msg += `• ${item.name} x${item.qty} — ${item.price * item.qty} JD\n`;
+      let msg = "Order:\n";
+      cart.forEach(i => {
+        msg += `${i.name} x${i.qty}\n`;
       });
-      msg += `\nTotal: ${total} JD`;
-      if (note) msg += `\n\nNotes: ${note}`;
+      msg += `Total: ${total} JD`;
 
-      window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(msg), "_blank");
+      window.open("https://wa.me/" + WA + "?text=" + encodeURIComponent(msg));
     }
 
     render();

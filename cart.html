@@ -320,7 +320,7 @@
       const itemsTotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
       const total = itemsTotal + DELIVERY_FEE;
 
-      let msg = "Order:\n";
+      let msg = "Hi! I'd like to place an order from 3D BY SS:\n\n";
       cart.forEach(i => {
         msg += `${i.name} x${i.qty}\n`;
       });
